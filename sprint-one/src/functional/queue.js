@@ -2,6 +2,7 @@ var Queue = function(){
   // FIFO
   var someInstance = {};
   var count = 0;
+  var offset = 0;
 
   // Use an object with numeric keys to store values
   var storage = {};
@@ -9,11 +10,15 @@ var Queue = function(){
   // Implement the methods below
 
   someInstance.enqueue = function(value){
+    storage[count] = value;
+    count++;
   };
 
   someInstance.dequeue = function(){
-    count--;
-    return storage[count];
+    count && count--;
+    return storage[offset];
+    offset++;
+    
   };
 
   someInstance.size = function(){
