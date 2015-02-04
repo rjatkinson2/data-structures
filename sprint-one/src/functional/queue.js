@@ -10,15 +10,16 @@ var Queue = function(){
   // Implement the methods below
 
   someInstance.enqueue = function(value){
-    storage[count] = value;
+    storage[count+offset] = value;
     count++;
   };
 
   someInstance.dequeue = function(){
     count && count--;
-    return storage[offset];
+    var temp = storage[offset];
+    delete storage[offset];
     offset++;
-    
+    return temp;
   };
 
   someInstance.size = function(){
