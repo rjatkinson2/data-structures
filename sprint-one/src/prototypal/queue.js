@@ -8,7 +8,7 @@ var Queue = function() {
 };
 
 var queueMethods = {};
-queueMethods.queue = function(val){
+queueMethods.enqueue = function(val){
   this[this.count + this.offset] = val;
   this.count++;
 };
