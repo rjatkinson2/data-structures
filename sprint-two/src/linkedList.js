@@ -5,30 +5,32 @@ var LinkedList = function(){
 
   list.addToTail = function(value){
     var node = Node(value);
-    if (list.head === null) {
+    if(list.head === null){
       list.head = node;
-      list[value] = null;
-    } else if (list.tail === null) {
-      list.head.next = node;
-      list[value] = node;
-    } else {
+    } else{
       list.tail.next = node;
-      list[value] = node;
     }
     list.tail = node;
   };
 
   list.removeHead = function(){
     var temp = list.head.value;
-    delete list[list.head.value];
     list.head = list.head.next;
-
     return temp;
   };
 
   list.contains = function(target){
-    var lookup = JSON.stringify(target);
-    return (list.hasOwnProperty(lookup));
+    var search = function(node){
+      console.log(node.next);
+      if(node.value === target){
+        return true;
+      }
+      if(node.next === null){
+        return false;
+      }
+      return search(node.next);
+    };
+    return search(list.head);
   };
 
   return list;
