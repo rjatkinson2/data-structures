@@ -21,7 +21,6 @@ var LinkedList = function(){
 
   list.contains = function(target){
     var search = function(node){
-      console.log(node.next);
       if(node.value === target){
         return true;
       }
