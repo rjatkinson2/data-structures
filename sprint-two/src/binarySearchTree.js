@@ -46,17 +46,15 @@ BinarySearchTree.prototype.contains = function(value) {
 };
 BinarySearchTree.prototype.depthFirstLog = function(cb) {
   var currentTree = this;
-  var dflog = [];
-  var recursiveCallback = function(tree,parent,callBack){
-    dflog.push(tree.value);
+  var recursiveCallback = function(tree,callBack){
+    callBack(tree.value);
     if(tree.left !== null){
-      recursiveCallback(tree.left,tree,callBack);
+      recursiveCallback(tree.left,callBack);
     }else if(tree.right !== null){
-      recursiveCallback(tree.right,tree,callBack);
-    }else{
-
+      recursiveCallback(tree.right,callBack);
     }
   };
+  recursiveCallback(currentTree,cb);
 };
 
 
